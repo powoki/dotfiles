@@ -1,0 +1,19 @@
+#!/bin/bash
+
+Battery1_Capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
+Battery2_Capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
+
+Battery1_Status="$(cat /sys/class/power_supply/BAT0/status)"
+Battery2_Status="$(cat /sys/class/power_supply/BAT1/status)"
+
+case $Battery1_Status in
+	"Charging") B1Prefix="🔌";;
+	"Not charging"|"Discharging"|"Unknown") B1Prefix="🔋";;
+esac
+
+case $Battery2_Status in
+	"Charging") B2Prefix="🔌";;
+	"Not charging"|"Discharging"|"Unknown") B2Prefix="🔋";;
+esac
+
+echo " $B1Prefix $Battery1_Capacity% | $B2Prefix $Battery2_Capacity% "

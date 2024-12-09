@@ -1,0 +1,7 @@
+[batteries]
+interval=15
+command=~/.local/bin/sbar/sb-batteries
+
+[datetime]
+interval=60
+command=~/.local/bin/sbar/sb-datetime
